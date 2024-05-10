@@ -33,6 +33,10 @@ body {
         background-color: #171616
     }
 
+    .container{
+        padding: 10px
+    }
+
     .list-group {
         --bs-list-group-active-bg: orange;
         --bs-list-group-active-border-color: orange;
