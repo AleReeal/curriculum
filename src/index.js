@@ -12,6 +12,13 @@ app.get("/", (req, res)=>{
 })
 
 app.get("/home", (req, res)=>{
+    const currentUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    const targetUrl = 'https://alessandrore.it/home';
+
+    if (currentUrl !== targetUrl) {
+        return res.redirect(targetUrl);
+    }
+    
     const birthday = new Date("2005-08-06")
     let ageDifMs = Date.now() - birthday;
     let ageDate = new Date(ageDifMs); // miliseconds from epoch
