@@ -1,5 +1,5 @@
 body {
-    background-color: blue;
+    background-color: orange;
     }
     @media (min-width: 991.98px) {
     main {
@@ -16,25 +16,28 @@ body {
     }
 
     .last-item{
-        border-bottom-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity));
+        border-bottom-color: #212529;
     }
 
     .last-item.active{
         border-bottom-color: orange !important;
     }
 
-    .bg-dark {
-        --bs-bg-opacity: 1;
-        /*background-color: black !important;*/ 
-    }    
-    
     .bg-darker {
         --bs-bg-opacity: 1;
         background-color: #171616
     }
 
     .container{
-        padding: 10px
+        padding: 10px;
+    }
+
+    .list-group-item {
+        border: 1px solid white;
+    }
+
+    .list-group-item.active{
+        border-color: orange;
     }
 
     .list-group {
@@ -43,7 +46,7 @@ body {
     }
 
     .list-group-item .active{
-        border: black
+        border: white
     }
 
     .list-group-item.active{
@@ -59,7 +62,7 @@ body {
     .table{
         width:50%
     }
-    /* Sidebar */
+    
     .sidebar {
     position: fixed;
     top: 0;
