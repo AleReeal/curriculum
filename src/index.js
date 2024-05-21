@@ -1,5 +1,6 @@
 const express = require("express")
 const ejs = require("ejs")
+const path = require('path')
 const app = express()
 
 //Funzioni
@@ -9,8 +10,8 @@ app.set("view engine", "ejs")
 
 app.get("/", (req, res)=>{
     // Ti reindirizza sulla home
-    res.redirect("/home")
-})
+    res.redirect("/home") 
+}) 
 
 app.get("/home", (req, res)=>{
 
@@ -38,7 +39,7 @@ app.get("/portfolio", (req,res)=>{
     res.render("portfolio")
 })
 
-app.get("/contact", (req,res)=>{
+app.get("/contact", (req,res)=>{ 
     res.render("contact")
 })
 
