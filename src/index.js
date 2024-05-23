@@ -1,7 +1,17 @@
 const express = require("express")
 const ejs = require("ejs")
 const path = require('path')
+const mysql = require('mysql2');
 const app = express()
+
+// Configura i dettagli della connessione
+const db = mysql.createConnection({
+  host: '89.168.23.114',
+  port: 3333,
+  user: 'root',
+  password: 'root',
+  database: 'sito' 
+});
 
 //Funzioni
 
@@ -23,7 +33,7 @@ app.get("/home", (req, res)=>{
     if (currentUrl != targetUrl) {
         return res.redirect('https://alessandrore.it');
     }
-    // 
+    //
 
     // Aggiorna in tempo reale la mia età (anni)
     const birthday = new Date("2005-08-06")
@@ -31,9 +41,17 @@ app.get("/home", (req, res)=>{
     let ageDate = new Date(ageDifMs);
     let anni = Math.abs(ageDate.getUTCFullYear() - 1970);
     //
+    
+    const a = db.query(
+      'SELECT * FROM conoscenze;',
+      function (err, results, fields) {
+        console.log(results)
+        return results
+      }
+    );
 
-    res.render("home", { anni: anni, competenze: "SQL"})
-})
+    res.render("home", { anni: anni, competenze: 'mysql'})}
+)
 
 app.get("/portfolio", (req,res)=>{
     res.render("portfolio")
