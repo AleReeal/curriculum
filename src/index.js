@@ -1,15 +1,16 @@
 const express = require("express")
 const ejs = require("ejs")
 const path = require('path')
-const mysql = require('mysql2');
+const mysql = require('mysql2')
+require('dotenv').config()
 const app = express()
 
 // Configura i dettagli della connessione
 const db = mysql.createConnection({
-  host: '89.168.23.114',
+  host: process.env.DB_HOST,
   port: 3333,
-  user: 'root',
-  password: 'root',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
   database: 'sito' 
 });
 
