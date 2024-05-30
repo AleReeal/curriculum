@@ -1,18 +1,8 @@
 const express = require("express")
 const ejs = require("ejs")
 const path = require('path')
-const mysql = require('mysql2')
-require('dotenv').config()
+const db = require('./funzioni/database.js')
 const app = express()
-
-// Configura i dettagli della connessione
-const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: 3333,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: 'sito' 
-});
 
 //Funzioni
 
@@ -24,7 +14,7 @@ app.get("/", (req, res)=>{
     res.redirect("/home") 
 }) 
 
-app.get("/home", (req, res)=>{
+app.get("/home", async (req, res)=>{
 
     // Verifica che il sito corrente sia alessandrore.it (c'è un altro sito che hosta la stessa applicazione)
     // Nel caso non lo rimanda l'utente sul sito originale
@@ -43,16 +33,28 @@ app.get("/home", (req, res)=>{
     let anni = Math.abs(ageDate.getUTCFullYear() - 1970);
     //
     
-    const a = db.query(
-      'SELECT * FROM conoscenze;',
-      function (err, results, fields) {
-        console.log(results)
-        return results
-      }
-    );
+    const rows = await db.querySelect()
 
-    res.render("home", { anni: anni, competenze: 'mysql'})}
-)
+    const livelli = [[[]]]
+
+    contatori = [0,0,0]
+
+    rows.forEach(e=>{
+        switch(rows.livello){
+            case 'Principiante':
+                livelli[contatori[0]].push(e)
+                break;
+            case 'Intermedio':
+                livelli[contatori[1]].push(e)
+                break;
+            case 'Avanzato':
+                livelli[contatori[2]].push(e)
+                break;
+        }
+    })
+
+    res.render("home", { anni: anni, competenze: 'sql'})
+})
 
 app.get("/portfolio", (req,res)=>{
     res.render("portfolio")
