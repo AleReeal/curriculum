@@ -67,23 +67,28 @@
       </thead>
       <tbody>
         <tr>
+          <% for(let i = 0; i < max; i++){ %>
           <th scope="row"></th>
-            <td><%= competenze %></td>
-            <td>Javascript</td>
-            <td>C#</td>
+            <td>
+              <% if(competenze[0][i]){ %>
+              <%= competenze[0][i].nome %>
+              <% }
+              else{}%>
+            </td>
+            <td>
+              <% if(competenze[1][i]){ %>
+              <%= competenze[1][i].nome %>
+              <% }
+              else{}%>
+            </td>
+            <td>
+              <% if(competenze[2][i]){ %>
+              <%= competenze[2][i].nome %>
+              <% }
+              else{}%>
+            </td>
           </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>HTML</td>
-          <td>NodeJS</td>
-          <td>Windows Forms</td>
-        </tr>
-        <tr>
-          <th scope="row"></th>
-          <td>CSS</td>
-          <td></td>
-          <td>Docker</td>
-        </tr>
+          <%}%>
       </tbody>
     </table>
     </div>

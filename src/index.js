@@ -21,9 +21,10 @@ app.get("/home", async (req, res)=>{
     const currentUrl = req.get('host');
     const targetUrl = 'alessandrore.it';
 
-    if (currentUrl != targetUrl) {
+    // Commentarlo per debugging locale
+    /*if (currentUrl != targetUrl) {
         return res.redirect('https://alessandrore.it');
-    }
+    }*/
     //
 
     // Aggiorna in tempo reale la mia età (anni)
@@ -33,27 +34,40 @@ app.get("/home", async (req, res)=>{
     let anni = Math.abs(ageDate.getUTCFullYear() - 1970);
     //
     
+    // Esegue la query
     const rows = await db.querySelect()
+    //
 
-    const livelli = [[[]]]
+    console.table(rows)
 
-    contatori = [0,0,0]
+    const livelli = [[],[],[]]
 
     rows.forEach(e=>{
-        switch(rows.livello){
+        switch(e.livello){
             case 'Principiante':
-                livelli[contatori[0]].push(e)
+                livelli[0].push(e)
                 break;
             case 'Intermedio':
-                livelli[contatori[1]].push(e)
+                livelli[1].push(e)
                 break;
             case 'Avanzato':
-                livelli[contatori[2]].push(e)
+                livelli[2].push(e)
                 break;
         }
     })
 
-    res.render("home", { anni: anni, competenze: 'sql'})
+    const arrayLungo = 0
+    for(let i = 0; i < 3; i++){
+        let b = livelli[i].length
+        if(livelli[arrayLungo].length < b){
+            arrayLungo=i
+        }
+    }
+
+    console.log(arrayLungo)
+
+    console.log(livelli)
+    res.render("home", { anni: anni, competenze: livelli, max: livelli[arrayLungo].length})
 })
 
 app.get("/portfolio", (req,res)=>{
