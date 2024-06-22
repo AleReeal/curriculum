@@ -6,7 +6,6 @@
     <link rel="icon" type="image/x-icon" href="../images/logo-sito.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/home.css">
-    
     <title>Home</title>
 </head>
 <body>
@@ -16,7 +15,7 @@
   <nav id="sidebarMenu" class="d-lg-block sidebar collapse bg-dark">
     <div class="position-sticky">
       <div class="list-group list-group-flush mx-3 mt-4">
-        <img class="logo" src="../images/logo-sito.png">
+        <a href="/home"><img class="logo" src="../images/logo-sito.png"></a>
         <br><br><br>
         <a href="" class="list-group-item list-group-item-action py-2 ripple bg-dark text-white active" aria-current="true">
           <i class="fas fa-fw me-3"></i><span>Io</span>
@@ -47,50 +46,52 @@
 <!--Main layout-->
 <main style="margin-top: 58px;">
   <div class="container pt-4">
-    <div class="container display:inline">
-      <h1><b>Alessandro Ré</b></h1>
-    <h4>Aspirante Backend Developer</h4>
-    <br><br>
-    <p>Sono un ragazzo di <%= anni %> anni, appassionato di programmazione.</p>
-    <p>Il sito è fatto completamente in NodeJS</p>
+    <div class="row">
+      <div class="col-md-8">
+        <h1><b>Alessandro Ré</b></h1>
+        <h4>Aspirante Backend Developer</h4>
+        <br><br>
+        <p>Sono un <strong>ragazzo</strong> di <strong><%= anni %></strong> anni, appassionato di <strong>programmazione</strong>. Il mio <strong>sogno</strong> sarebbe quello di <strong>lavorare in proprio</strong> e poi fondare una <strong>società</strong>!</p>
+        <p>Il <strong>sito</strong> è fatto completamente in <strong>NodeJS</strong></p>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="../images/profile.jpg" alt="Profile Picture" class="img-fluid rounded-circle">
+      </div>
     </div>
-    <div class="container">
-      <h4 class="mt-4">Le mie competenze (livello accademico):</h4>
-    <table class="table table-dark">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Principiante</th>
-          <th scope="col">Intermedio</th>
-          <th scope="col">Avanzato</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <% for(let i = 0; i < max; i++){ %>
-          <th scope="row"></th>
-            <td>
-              <% if(competenze[0][i]){ %>
-              <%= competenze[0][i].nome %>
-              <% }
-              else{}%>
-            </td>
-            <td>
-              <% if(competenze[1][i]){ %>
-              <%= competenze[1][i].nome %>
-              <% }
-              else{}%>
-            </td>
-            <td>
-              <% if(competenze[2][i]){ %>
-              <%= competenze[2][i].nome %>
-              <% }
-              else{}%>
-            </td>
+    <div class="container mt-4">
+      <h4>Le mie competenze (livello accademico):</h4>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Principiante</th>
+            <th scope="col">Intermedio</th>
+            <th scope="col">Avanzato</th>
           </tr>
-          <%}%>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <tr>
+            <% for(let i = 0; i < max; i++){ %>
+            <th scope="row"></th>
+              <td>
+                <% if(competenze[0][i]){ %>
+                <%= competenze[0][i].nome %>
+                <% } else {} %>
+              </td>
+              <td>
+                <% if(competenze[1][i]){ %>
+                <%= competenze[1][i].nome %>
+                <% } else {} %>
+              </td>
+              <td>
+                <% if(competenze[2][i]){ %>
+                <%= competenze[2][i].nome %>
+                <% } else {} %>
+              </td>
+            </tr>
+            <% } %>
+        </tbody>
+      </table>
     </div>
   </div>
 </main>

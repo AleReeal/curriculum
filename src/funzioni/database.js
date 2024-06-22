@@ -3,7 +3,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 // Configura i dettagli della connessione
-const db = mysql.createPool({
+const db = mysql.createConnection({
     host: process.env.DB_HOST,
     port: 3333,
     user: process.env.DB_USER,

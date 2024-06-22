@@ -15,7 +15,7 @@
         <nav id="sidebarMenu" class="d-lg-block sidebar collapse bg-dark">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <img class="logo" src="../images/logo-sito.png">
+              <a href="/home"><img class="logo" src="../images/logo-sito.png"></a>
               <br><br><br>
               <a href="/home" class="list-group-item list-group-item-action py-2 ripple bg-dark text-white" aria-current="true">
                 <i class="fas fa-fw me-3"></i><span>Io</span>
@@ -46,6 +46,57 @@
       <!--Main layout-->
       <main style="margin-top: 58px;">
         <div class="container pt-4">
+          <div class="container rounded bg-dark text-light shadow-lg">
+          <h1>Creare un file eseguibile allo start di Ubuntu</h1>
+          <p><strong>Creare</strong> un file <strong>prova.sh</strong> (nome a scelta)</p>
+          <p><strong>Renderlo eseguibile</strong> con il comando: <strong>chmod +x prova.sh</strong></p>
+          <p><strong>Copiarlo</strong> nella directory <strong>/etc/init.d</strong> con il comando:</p>
+          <p><strong>sudo cp /path/del/file/prova.sh etc/init.d</strong></p>
+          <p>E in questo modo all’avvio verrà eseguito</p>
+          <br>
+          <p><strong>N.B.</strong> Un metodo migliore sarebbe creare un file <strong>.sh</strong> con scritto:</p>
+          <p><strong>#!/bin/bash</strong></p>
+          <p><strong>cd /path/del/file</strong></p>
+          <p><strong>./prova.sh</strong></p>
+          <br>
+          <p>(In questo modo potrai modificare facilmente quel file e verrà sempre eseguito il file aggiornato)</p>
+          </div>
+
+          <br><hr><br>
+
+          <div class="container rounded bg-dark text-light shadow-lg">
+            <h1>Avviare automaticamente un Docker container all’avvio di Ubuntu</h1>
+            <p>Docker ha una <strong>default-policy</strong> di <strong>non riavviare</strong> i container</p>
+            <p>Per cambiare la <strong>policy</strong> di un container già creato usare il seguente comando:</p>
+            <p><strong>docker update —restart=always nome_container (o l’id)</strong></p>
+            <br>
+            <p><strong>Le flag dell’opzione restart:</strong></p>
+            <p><strong>no</strong> : non avvia automaticamente</p>
+            <p><strong>on-failure</strong> : riavvia nel caso si fermasse per un errore (codice 0) ma anche all’avvio del server</p>
+            <p><strong>on-failure</strong> : riavvia in ogni caso</p>
+            <p><strong>unless-stopped</strong> : riavvia sempre tranne quando è viene stoppato manualmente o in altri modi, in teoria riavvia anche all’avvio del server</p>  
+          </div>
+
+          <br><hr><br>
+
+          <div class="container rounded bg-dark text-light shadow-lg">
+            <h1>Utilizzare Bootstrap su un’app Express di NodeJS</h1>
+            <p><strong>Il link del post:</strong></p>
+            <p><a href="https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot">https://stackoverflow.com/questions/30449313/how-do-i-make-a-docker-container-start-automatically-on-system-boot</a></p>
+            <p><strong>Installare</strong> con npm <strong>Bootstrap</strong> e <strong>jQuery</strong> (su cui si basa Bootstrap):</p>
+            <p><strong>npm i -D bootstrap jquery</strong></p>
+            <p>Ora sarà installato nei node_modules dell’app</p>
+            <p>Inserire nell’<strong>index.js</strong> la riga:</p>
+            <p><strong>app.use(express.static(__dirname))</strong></p>
+            <p>Inserire nel file <strong>.html</strong> o nel mio caso <strong>.ejs</strong>, dove si vuole far applicare lo style, nell’<strong>head</strong>:</p>
+            <p><strong>link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/</strong></p>
+            <br>
+            <p>Sempre nello stesso file inserire alla fine del <strong>body</strong>:</p>
+            <p><strong>script src="../node_modules/node_modules/jquery/dist/jquery.min.js"</strong></p>
+            <p><strong>script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"</strong></p>
+          </div>
+          
+          <br><hr><br>
         </div>
       </main>
       

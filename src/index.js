@@ -38,7 +38,7 @@ app.get("/home", async (req, res)=>{
     const rows = await db.querySelect()
     //
 
-    console.table(rows)
+    //console.table(rows)
 
     const livelli = [[],[],[]]
 
@@ -88,4 +88,4 @@ app.get("/privacy", (req, res)=>{
 
 
 
-app.listen(80)
+app.listen(8080)
