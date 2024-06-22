@@ -88,4 +88,4 @@ app.get("/privacy", (req, res)=>{
 
 
 
-app.listen(8080)
+app.listen(80)
